@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import asynchandler from "../utility/asynchandler.js";    
 import { Op } from "sequelize";
+import jwt from "jsonwebtoken";
 const generateAccessAndRefreshToken = async(user_id)=>{
     try{
     const user = await User.findByPk(user_id);
@@ -68,7 +69,8 @@ export const registerUser =
         }
         const options={
             httpOnly:true,
-            secure:true
+            secure:false,
+            sameSite:'lax',
         }
         return res.status(200).cookie("RefreshToken",refreshToken,options).cookie("AccessToken",accessToken,options).json({
             message:"User logged in successfully",User_info:user
@@ -81,11 +83,26 @@ export const registerUser =
         await loginUser.save();
         const options={
             httpOnly:true,
-            secure:true,
+            secure:false,
+            sameSite:'lax',
         }
         res.status(200).clearCookie("RefreshToken",options).clearCookie("AccessToken",options).json(
             {message:"User Logged Out Successfully"}
         )
     })
+
+    export const loginStatus = asynchandler(async(req,res)=>{
+        const refreshToken = req.cookies.RefreshToken;
+        if(!refreshToken){
+            return res.status(200).json({isLogin:false});
+        }
+        try{
+            const decodedToken = await jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET);
+            return res.status(200).json({isLogin:true});
+        }catch(error){
+            return res.status(200).json({isLogin:false});
+        }
+    })
+    
 
     

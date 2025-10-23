@@ -6,7 +6,7 @@ const verifyJWT = async (req, res, next) => {
     if(!token){
         return res.status(401).json({message:"Unauthorized: No token provided"});
     }
-    const decodedToken = await jwt.verify(token, process.env.AccessTokenSecret);
+    const decodedToken = await jwt.verify(token, process.env.Access_Token_Secret);
     const user = await User.findByPk(decodedToken.id);
     if(!user){
         return res.status(401).json({message:"Unauthorized: Invalid token"});

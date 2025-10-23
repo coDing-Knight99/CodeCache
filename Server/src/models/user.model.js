@@ -56,7 +56,7 @@ User.prototype.generateAccessToken = function(){
 
 User.prototype.generateRefreshToken = function(){
     return jwt.sign({
-        id:this.id,
+        id:this.id,     
     },process.env.REFRESH_TOKEN_SECRET,{
         expiresIn:'7d'
     }
