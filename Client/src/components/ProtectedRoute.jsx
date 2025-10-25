@@ -9,7 +9,7 @@ const ProtectedRoute = ({children}) => {
     useEffect(() => {
         const checkValid=async()=>{
             try{
-                const res = await axios("http://localhost:3000/users/loginstatus");
+                const res = await axios("https://codecache-830q.onrender.com/users/loginstatus");
                 setisAuthenticated(res.data.isLogin);
             }catch(error)
             {

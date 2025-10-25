@@ -28,13 +28,13 @@ const Home = () => {
   const fetchSnippets = async() => {
       if(FilteredTags.length>0 || query.trim()!='')
       {
-        const res = await axios.post("http://localhost:3000/user/snippets/filteredSnippets",{query,FilteredTags},{withCredentials:true})
+        const res = await axios.post("https://codecache-830q.onrender.com/user/snippets/filteredSnippets",{query,FilteredTags},{withCredentials:true})
         const data = res.data.snippets;
         setSnippets(data);
         console.log(Snippets);
       }
       else{
-        const res= await axios.get("http://localhost:3000/user/snippets/userSnippets");
+        const res= await axios.get("https://codecache-830q.onrender.com/user/snippets/userSnippets");
         const data = res.data.snippets;
         // if(FilteredTags.length>0)
         //   {
@@ -65,7 +65,7 @@ const Home = () => {
       }
     }
     const fetchtags = async() => {
-      const res=await axios.get("http://localhost:3000/user/snippets/gettags");
+      const res=await axios.get("https://codecache-830q.onrender.com/user/snippets/gettags");
       console.log(res.data.tags);
       settags(res.data.tags);
     }

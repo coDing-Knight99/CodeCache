@@ -5,7 +5,7 @@ const ConfirmDelete = ({snippet_id,setdeleteSnip,fetchSnippets,fetchtags,setload
   const handleDelete = async()=>{
     try{
       console.log(snippet_id)
-      const res = await axios.delete("http://localhost:3000/user/snippets/delete",{data:{snippet_id:snippet_id}})
+      const res = await axios.delete("https://codecache-830q.onrender.com/user/snippets/delete",{data:{snippet_id:snippet_id}})
       console.log(res)
       await fetchSnippets();
       await fetchtags();

@@ -19,7 +19,7 @@ const EditSnippet = ({Snippet,seteditSnip,fetchSnippets,fetchtags,setloader}) =>
     try{
       const snippet_id=Snippet.id;
       console.log({snippet_id,title,code,language,description,tags})
-      const res = await axios.put("http://localhost:3000/user/snippets/update",{snippet_id:snippet_id,title:title,code:code,language:language,description:description,newtags:tags})
+      const res = await axios.put("https://codecache-830q.onrender.com/user/snippets/update",{snippet_id:snippet_id,title:title,code:code,language:language,description:description,newtags:tags})
       await fetchSnippets();
       await fetchtags();
 

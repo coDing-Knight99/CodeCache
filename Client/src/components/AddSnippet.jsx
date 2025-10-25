@@ -17,7 +17,7 @@ const AddSnippet = ({setaddSnip,fetchSnippets,fetchtags,setloader}) => {
     const isFormValid = title.trim()!='' && description.trim()!='' && language.trim()!='' && tags.trim()!='' && code.trim()!='';
     const handleAdd = async()=>{
         try{
-            const res = await axios.post("http://localhost:3000/user/snippets/create",{title,description,language,code,tags})
+            const res = await axios.post("https://codecache-830q.onrender.com/user/snippets/create",{title,description,language,code,tags})
             toast("Snippet Added Successfully!",{className:"font-bold text-lg"})
             const data = res.data;
             await fetchSnippets();

@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isLogin, setisLogin] = useState(null);
   useEffect(() => {
     const checkStatus = async()=>{
-      const res = await axios.get("http://localhost:3000/users/loginstatus");
+      const res = await axios.get("https://codecache-830q.onrender.com/users/loginstatus");
       setisLogin(res.data.isLogin)
     }
     checkStatus();
@@ -40,7 +40,7 @@ const Navbar = () => {
                 <li className='flex cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-gray-200 lg:mt-10 lg:mr-10 mt-3' onClick={()=>{  
                   const logout = async()=>{
                     setisLoading(true)
-                    const res = await axios.post("http://localhost:3000/users/logout",{},{withCredentials:true});
+                    const res = await axios.post("https://codecache-830q.onrender.com/users/logout",{},{withCredentials:true});
                     setisLoading(false)
                     navigate('/login',{replace:true})
                   }

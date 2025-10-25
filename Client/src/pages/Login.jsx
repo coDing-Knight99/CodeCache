@@ -19,7 +19,7 @@ const Login = () => {
     console.log({fullname,email,username,password});
     try{
         setloader(true);
-        const res=await axios.post("http://localhost:3000/users/register",{username,email,password,fullname});
+        const res=await axios.post("https://codecache-830q.onrender.com/users/register",{username,email,password,fullname});
         document.getElementById("username").value='';
         document.getElementById("email").value='';
         document.getElementById("fullname").value='';
@@ -33,7 +33,7 @@ const Login = () => {
         if(res.status==201)
         {
           try{
-            const resLog = await axios.post("http://localhost:3000/users/login",{username:username,password:password});
+            const resLog = await axios.post("https://codecache-830q.onrender.com/users/login",{username:username,password:password});
             toast(resLog.data.message,{className:"font-bold text-lg"});
             console.log(res.data);
           }
@@ -59,7 +59,7 @@ const handleLogin = async function(){
   console.log({usernamelog,passwordlog});
   try{
     setloader(true);
-    const res = await axios.post("http://localhost:3000/users/login",{username:usernamelog,password:passwordlog});
+    const res = await axios.post("https://codecache-830q.onrender.com/users/login",{username:usernamelog,password:passwordlog});
     document.getElementById("usernamelog").value='';
     document.getElementById("passwordlog").value='';
     setpasswordlog('');
