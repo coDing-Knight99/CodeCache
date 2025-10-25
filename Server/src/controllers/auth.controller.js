@@ -69,8 +69,8 @@ export const registerUser =
         }
         const options={
             httpOnly:true,
-            secure:false,
-            sameSite:'lax',
+            secure:true,
+            sameSite:'none',
             path:'/'
         }
         return res.status(200).cookie("RefreshToken",refreshToken,options).cookie("AccessToken",accessToken,options).json({
@@ -85,8 +85,8 @@ export const registerUser =
         await loginUser.save();
         const options={
             httpOnly:true,
-            secure:false,
-            sameSite:'lax',
+            secure:true,
+            sameSite:'none',
             path:'/'
         }
         res.status(200).clearCookie("RefreshToken",options).clearCookie("AccessToken",options).json(

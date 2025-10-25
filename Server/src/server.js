@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(cors(
-{    origin: 'http://localhost:5173',
+{    origin: 'https://code-cache-3w7tf1otk-dhruv-kanojias-projects.vercel.app',
     credentials: true,
 }));
 app.use(express.json());
