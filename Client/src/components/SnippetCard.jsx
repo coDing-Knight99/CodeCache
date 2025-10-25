@@ -1,6 +1,6 @@
 import React from 'react'
 import { Copy, PenIcon, Trash2Icon } from 'lucide-react'
-import Taggrid from './taggrid'
+import Taggrid from './Taggrid'
 import { toast } from 'react-toastify'
 const SnippetCard = ({ snippet,setviewSnip,seteditSnip,setdeleteSnip }) => {
   const tags = snippet.tags.split(',')

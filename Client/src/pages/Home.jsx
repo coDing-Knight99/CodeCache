@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Taggrid from '../components/taggrid';
+import Taggrid from '../components/Taggrid';
 import axios from 'axios';
 import { useEffect } from 'react';
 import SnippetCard from '../components/SnippetCard';
