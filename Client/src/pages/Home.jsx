@@ -36,31 +36,7 @@ const Home = () => {
       else{
         const res= await axios.get("https://codecache-830q.onrender.com/user/snippets/userSnippets");
         const data = res.data.snippets;
-        // if(FilteredTags.length>0)
-        //   {
-        //     const filter = async(data)=>{
-        //       let newData = new Set();
-        //       data.forEach(d=>{
-        //         console.log(d)
-        //         const tagsArray =d.tags.split(",")
-        //         console.log(tagsArray) 
-        //         tagsArray.forEach(tag=>{
-        //           console.log(tag)
-        //           if(FilteredTags.includes(tag))
-        //           {
-                    
-        //             newData.add(d);
-        //             console.log(newData)
-        //           }
-        //         })
-        //       })
-        //       const newdata = Array.from(newData);
-        //       setSnippets(newdata);
-        //     }
-        //     filter();
-        //   }
-        //   else
-          setSnippets(data);
+        setSnippets(data);
         console.log(Snippets);
       }
     }

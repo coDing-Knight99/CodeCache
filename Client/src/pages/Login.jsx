@@ -15,7 +15,6 @@ const Login = () => {
   const [passwordlog, setpasswordlog] = useState('')
   const navigate = useNavigate();
   const Register = async function(){
-    // Registration logic here
     console.log({fullname,email,username,password});
     try{
         setloader(true);
@@ -80,7 +79,6 @@ const handleLogin = async function(){
     <div className="relative flex w-full h-screen overflow-hidden">
       <ToastContainer/>
       {loader && <Loader/>}
-      {/* Background Image Section */}
       <div
         className={`absolute lg:z-20 top-0 h-full w-1/2 transition-all duration-700 ease-in-out ${
           isLogin ? "left-1/2" : "left-0"
@@ -93,7 +91,6 @@ const handleLogin = async function(){
         />
       </div>
 
-      {/* LOGIN FORM */}
       <div
         className={`flex items-center justify-center ${isLogin?"w-screen z-100":"w-0"} lg:w-1/2 h-full bg-gradient-to-br from-blue-100 via-white to-blue-200`}
       >
@@ -157,7 +154,6 @@ const handleLogin = async function(){
         </div>
       </div>
 
-      {/* SIGNUP FORM */}
       <div
         className={`absolute right-0 flex items-center ${isLogin?"w-0":"w-full"} justify-center lg:w-1/2 h-full bg-gradient-to-br from-blue-100 via-white to-blue-200`}
       >

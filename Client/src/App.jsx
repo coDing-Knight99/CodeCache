@@ -27,17 +27,6 @@ function App() {
         <Home/>
       </ProtectedRoute>}/>
     </Routes>
-      {/* <ConfirmDelete/> */}
-      {/* {/* <ViewSnippet Code="//hello"/> */}
-      {/* <EditSnippet Snippet={{
-    "title": "Basic Express Server",
-    "description": "Sets up a minimal Express.js server with a single route.",
-    "language": "JavaScript (Node.js)",
-    "code": "import express from 'express';\n const app = express();\napp.get('/', (req, res) => res.send('Hello World'));\napp.listen(3000, () => console.log('Server running on port 3000'));",
-    "tags": "Node.js,Express,Backend"
-  }}/> */}
-
-      {/* <SnippetCard/> */}
     </>
   )
 }

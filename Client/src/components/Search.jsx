@@ -6,7 +6,6 @@ const SnippetFilter = ({ setquery,fetchSnippets }) => {
   const handleChange = async(e) => {
     const value = e.target.value;
     setquery(value);
-    // onFilter(value.trim());
   };
 
   return (
