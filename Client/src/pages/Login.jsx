@@ -65,9 +65,9 @@ const handleLogin = async function(){
     setpasswordlog('');
     setusernamelog('');
     setloader(false);
-    toast(res.data.message,{className:"font-bold text-lg"});
+    // toast(res.data.message,{className:"font-bold text-lg"});
     navigate('/',{replace:true})
-    console.log(res.data);
+    // console.log(res.data);
   }catch(error){
     setloader(false);
     console.log("Error Logging In");
