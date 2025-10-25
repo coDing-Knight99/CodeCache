@@ -10,7 +10,7 @@ const SnippetFilter = ({ setquery,fetchSnippets }) => {
   };
 
   return (
-    <div className="relative w-[80%] lg:w-full max-w-xl m-10">
+    <div className="relative w-[80%] lg:w-full max-w-xl m-5 lg:m-10">
       <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
       <input
         type="text"

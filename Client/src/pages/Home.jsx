@@ -97,8 +97,8 @@ const Home = () => {
       {editSnip && <EditSnippet Snippet={editSnip} seteditSnip={seteditSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
       <div className='flex flex-col lg:flex-row justify-between'>
       <div>
-      <div className='text-2xl text-gray-700 pl-10'>Filter by tags:</div>
-      <div className='flex flex-wrap lg:pl-10 pl-6'>
+      <div className='lg:text-2xl text-xl text-gray-700 pl-5 lg:pl-10'>Filter by tags:</div>
+      <div className='flex flex-wrap lg:pl-10 pl-5'>
          {
           (expanded)?
          tags.map((tag)=><TagList key={tag} tagName={tag} FilteredTags={FilteredTags} setFilteredTags={setFilteredTags}/>)
