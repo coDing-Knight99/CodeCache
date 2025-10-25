@@ -21,7 +21,7 @@ const Navbar = () => {
     <div className='flex justify-between w-full h-[10%]'>
       {isLoading && <Loader/>}
       <div className='flex flex-col gap-2'>
-        <div className='flex pl-2 pt-5 lg:pl-10 lg:pt-10'>
+        <div className='flex pl-5 pt-5 lg:pl-10 lg:pt-10'>
             <p className='text-3xl sm:text-4xl lg:text-5xl font-sans font-bold'>&lt;</p>
             <p className='text-3xl sm:text-4xl lg:text-5xl font-sans font-bold text-blue-500'>/</p>
             <p className='text-3xl sm:text-4xl lg:text-5xl font-sans font-bold'>&gt; Code</p>

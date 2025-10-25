@@ -10,7 +10,7 @@ const SnippetCard = ({ snippet,setviewSnip,seteditSnip,setdeleteSnip }) => {
       
       <div className="flex justify-between mb-4">
         <div className="flex flex-col gap-2">
-          <p className="text-2xl font-semibold line-clamp-2">
+          <p className="lg:text-2xl text-xl font-semibold line-clamp-2">
             {snippet.title}
           </p>
           <p className="text-gray-600 text-lg line-clamp-2">
@@ -47,7 +47,7 @@ const SnippetCard = ({ snippet,setviewSnip,seteditSnip,setdeleteSnip }) => {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap lg:gap-2 gap-1">
         {tags.map((tagName, index) => (
           <Taggrid key={index} tagName={tagName.trim()} index={index} />
         ))}

@@ -13,7 +13,7 @@ const ViewSnippet = ({code,setviewSnip}) => {
                 document.body.classList.remove("overflow-hidden")
             }} className='text-black cursor-pointer text-2xl font-medium'/>
         </div>
-      <div onClick={(e)=>{e.stopPropagation()}} className="h-[75%] w-[75%] lg:w-[50%] rounded-2xl shadow-lg p-6 overflow-y-auto">
+      <div onClick={(e)=>{e.stopPropagation()}} className="h-[75%] w-[95%] lg:w-[50%] rounded-2xl shadow-lg p-6 overflow-y-auto">
         <Editor
                 height="100%"
                 defaultLanguage="javascript"
