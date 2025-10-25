@@ -71,6 +71,7 @@ export const registerUser =
             httpOnly:true,
             secure:false,
             sameSite:'lax',
+            path:'/'
         }
         return res.status(200).cookie("RefreshToken",refreshToken,options).cookie("AccessToken",accessToken,options).json({
             message:"User logged in successfully",User_info:user
@@ -80,11 +81,13 @@ export const registerUser =
     export const logoutUser = asynchandler(async(req,res,next)=>{
         const loginUser = await User.findByPk(req.user.id)
         loginUser.refreshToken="";
+        console.log(loginUser)
         await loginUser.save();
         const options={
             httpOnly:true,
             secure:false,
             sameSite:'lax',
+            path:'/'
         }
         res.status(200).clearCookie("RefreshToken",options).clearCookie("AccessToken",options).json(
             {message:"User Logged Out Successfully"}

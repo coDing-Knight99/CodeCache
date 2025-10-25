@@ -11,5 +11,11 @@
     "mysql2": "^3.15.2",
     "nodemon": "^3.1.10",
     "sequelize": "^6.37.7"
-  }
+  },
+  "scripts": {
+  "dev": "nodemon -r ./src/preloadEnv.js src/index.js",
+  "start": "node -r ./src/preloadEnv.js src/index.js"
+}
+
+  
 }

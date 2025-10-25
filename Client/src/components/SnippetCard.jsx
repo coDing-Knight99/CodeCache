@@ -1,12 +1,12 @@
 import React from 'react'
 import { Copy, PenIcon, Trash2Icon } from 'lucide-react'
 import Taggrid from './taggrid'
-
+import { toast } from 'react-toastify'
 const SnippetCard = ({ snippet,setviewSnip,seteditSnip,setdeleteSnip }) => {
   const tags = snippet.tags.split(',')
 
   return (
-    <div className="flex flex-col w-[90%] lg:w-[45%] border rounded-2xl m-5 p-5 lg:m-10 lg:p-10 hover:scale-101 transition-transform hover:shadow-xl bg-white">
+    <div className="flex flex-col w-[90%] lg:w-[43.5%] border rounded-2xl m-5 p-5 lg:m-10 lg:p-10 hover:scale-101 transition-transform hover:shadow-xl bg-white">
       
       <div className="flex justify-between mb-4">
         <div className="flex flex-col gap-2">
@@ -17,11 +17,11 @@ const SnippetCard = ({ snippet,setviewSnip,seteditSnip,setdeleteSnip }) => {
             {snippet.description}
           </p>
         </div>
-        <ul className="flex gap-4 items-start">
+        <ul className="flex gap-1 sm:gap-4 items-start">
           <li onClick={()=>{
             try{
                 navigator.clipboard.writeText(snippet.code)
-                alert("Copied to Clipboard")
+                toast("Copied to Clipboard !",{className:"text-lg font-bold"})
             }catch(error)
             {
                 console.log("Error Copying to Clipboard",error)

@@ -7,44 +7,119 @@ import ViewSnippet from '../components/ViewSnippet';
 import EditSnippet from '../components/EditSnippet';
 import AddSnippet from '../components/AddSnippet';
 import TagList from '../components/TagList';
-import { PlusIcon } from 'lucide-react';
+import { Ellipsis, PlusIcon } from 'lucide-react';
 import ConfirmDelete from '../components/ConfirmDelete';
+import Loader from '../components/Loader';
+import Navbar from '../components/Navbar';
+import SnippetFilter from '../components/Search';
+import { ToastContainer } from 'react-toastify';
+import { X } from 'lucide-react';
 const Home = () => {
-  // const tags=["JavaScript","Python","React","NodeJS","Express","MongoDB","SQL","HTML","CSS","Django","Flask","Java","C++","C#","Ruby","PHP"];
+  const [expanded, setexpanded] = useState(false)
   const [deleteSnip, setdeleteSnip] = useState(null)
   const [addSnip, setaddSnip] = useState(false)
   const [viewSnip, setviewSnip] = useState(null)
   const [Snippets, setSnippets] = useState([])
   const [tags, settags] = useState([])
   const [editSnip, seteditSnip] = useState(null)
-  useEffect(() => {
+  const [loader, setloader] = useState(false)
+  const [FilteredTags, setFilteredTags] = useState([])
+  const [query, setquery] = useState('')
+  const fetchSnippets = async() => {
+      if(FilteredTags.length>0 || query.trim()!='')
+      {
+        const res = await axios.post("http://localhost:3000/user/snippets/filteredSnippets",{query,FilteredTags},{withCredentials:true})
+        const data = res.data.snippets;
+        setSnippets(data);
+        console.log(Snippets);
+      }
+      else{
+        const res= await axios.get("http://localhost:3000/user/snippets/userSnippets");
+        const data = res.data.snippets;
+        // if(FilteredTags.length>0)
+        //   {
+        //     const filter = async(data)=>{
+        //       let newData = new Set();
+        //       data.forEach(d=>{
+        //         console.log(d)
+        //         const tagsArray =d.tags.split(",")
+        //         console.log(tagsArray) 
+        //         tagsArray.forEach(tag=>{
+        //           console.log(tag)
+        //           if(FilteredTags.includes(tag))
+        //           {
+                    
+        //             newData.add(d);
+        //             console.log(newData)
+        //           }
+        //         })
+        //       })
+        //       const newdata = Array.from(newData);
+        //       setSnippets(newdata);
+        //     }
+        //     filter();
+        //   }
+        //   else
+          setSnippets(data);
+        console.log(Snippets);
+      }
+    }
     const fetchtags = async() => {
       const res=await axios.get("http://localhost:3000/user/snippets/gettags");
       console.log(res.data.tags);
       settags(res.data.tags);
     }
-    const fetchSnippets = async() => {
-      const res= await axios.get("http://localhost:3000/user/snippets/userSnippets");
-      const data = res.data.snippets;
-      setSnippets(data);
-      console.log(data);
+    useEffect(() => {
+      fetchSnippets();
+    }, [FilteredTags,query])
+    
+  useEffect(() => {
+    const loadHome = async()=>{
+      setloader(true);
+      await fetchtags();
+      await fetchSnippets();
+      setloader(false);
     }
-    fetchtags();
-    fetchSnippets();
+    loadHome();
     console.log("Home useEffect called");
     console.log(Snippets);  
     console.log(tags);  
   }, [])
   return (
     <div>
-      {deleteSnip && <ConfirmDelete snippet_id={deleteSnip} setdeleteSnip={setdeleteSnip}/>}
-      {addSnip && <AddSnippet setaddSnip={setaddSnip}/>}
-      {viewSnip && <ViewSnippet code={viewSnip} setviewSnip={setviewSnip}/>}
-      {editSnip && <EditSnippet Snippet={editSnip} seteditSnip={seteditSnip}/>}
+      <Navbar/>
+      <SnippetFilter setquery={setquery} fetchSnippets={fetchSnippets}/>
+      <ToastContainer/>
+      {loader && <Loader/>}
+      {deleteSnip && <ConfirmDelete snippet_id={deleteSnip} setdeleteSnip={setdeleteSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
+      {addSnip && <AddSnippet setaddSnip={setaddSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
+      {viewSnip && <ViewSnippet code={viewSnip} setviewSnip={setviewSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
+      {editSnip && <EditSnippet Snippet={editSnip} seteditSnip={seteditSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
+      <div className='flex flex-col lg:flex-row justify-between'>
       <div>
       <div className='text-2xl text-gray-700 pl-10'>Filter by tags:</div>
-      <div className='flex flex-wrap pl-10'>
-         {tags.map((tag)=><TagList key={tag} tagName={tag}/>)}
+      <div className='flex flex-wrap lg:pl-10 pl-6'>
+         {
+          (expanded)?
+         tags.map((tag)=><TagList key={tag} tagName={tag} FilteredTags={FilteredTags} setFilteredTags={setFilteredTags}/>)
+         :
+         tags.slice(0,6).map((tag)=><TagList key={tag} tagName={tag} FilteredTags={FilteredTags} setFilteredTags={setFilteredTags}/>)
+        }
+      </div>
+      </div>
+      <div className='flex lg:gap-2 mx-4'>
+        {
+          FilteredTags.length>0 && 
+          <button onClick={()=>{setFilteredTags([])}} className='text-white bg-black p-3 rounded-full text-lg font-medium mx-2 my-5 lg:m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400 flex gap-2 items-center justify-center'>
+            Clear All <X/>
+          </button>
+        }
+        {
+          tags.length>6 && 
+          <button onClick={()=>{setexpanded(!expanded)}} className='text-white bg-black p-3 rounded-full text-lg font-medium m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400'>
+            {expanded? "Show Less" : `Show More ${tags.length - 6}`}
+          </button>
+        }
       </div>
       </div>
       <div className='flex flex-col flex-wrap md:flex-row items-center justify-center md:justify-start'>
@@ -53,9 +128,17 @@ const Home = () => {
         }
       </div>
       <div onClick={()=>{
-        setaddSnip(true)
-        document.body.classList.add("overflow-hidden")
-      }} className='cursor-pointer fixed flex items-center justify-center bottom-15 right-20 w-15 h-15 z-50 bg-black text-white rounded-full font-medium hover:shadow-2xl hover:border hover:border-2 hover:border-gray-400 hover:scale-110'>
+        if(viewSnip || editSnip || deleteSnip)
+        {
+          return;
+        }else
+        {
+          setaddSnip(true)
+          document.body.classList.add("overflow-hidden")
+        }
+
+
+      }} className='cursor-pointer fixed flex items-center justify-center bottom-5 right-5 lg:bottom-15 lg:right-20 w-15 h-15 z-50 bg-black text-white rounded-full font-medium hover:shadow-2xl hover:border hover:border-2 hover:border-gray-400 hover:scale-110'>
         <PlusIcon className='text-white font-medium'/>
       </div>
     </div>
