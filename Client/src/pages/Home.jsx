@@ -93,7 +93,7 @@ const Home = () => {
         {
           tags.length>6 && 
           <button onClick={()=>{setexpanded(!expanded)}} className='text-white bg-black p-3 rounded-full text-lg font-medium m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400'>
-            {expanded? "Show Less" : `Show More ${tags.length - 6}`}
+            {expanded? "Show Less" : `Show ${tags.length - 6} More`}
           </button>
         }
       </div>
