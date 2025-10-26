@@ -80,19 +80,19 @@ const handleLogin = async function(){
       <ToastContainer/>
       {loader && <Loader/>}
       <div
-        className={`absolute lg:z-20 top-0 h-full w-1/2 transition-all duration-700 ease-in-out ${
+        className={`fixed lg:z-20 top-0 h-full w-1/2 transition-all duration-700 ease-in-out ${
           isLogin ? "left-1/2" : "left-0"
         }`}
       >
         <img
-          className="w-full h-full object-cover z-200"
+          className="w-full h-full object-cover z-100"
           src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
           alt="Background"
         />
       </div>
 
       <div
-        className={`flex items-center justify-center ${isLogin?"w-screen z-100":"w-0"} lg:w-1/2 h-full bg-gradient-to-br from-blue-100 via-white to-blue-200`}
+        className={`flex items-center justify-center ${isLogin?"w-screen z-70":"w-0"} lg:w-1/2 h-full bg-gradient-to-br from-blue-100 via-white to-blue-200`}
       >
         <div className="flex flex-col items-center justify-center bg-white shadow-2xl rounded-3xl p-10 lg:w-[400px]">
           <h1 className="text-3xl sm:text-4xl font-bold text-blue-600 mb-8">
