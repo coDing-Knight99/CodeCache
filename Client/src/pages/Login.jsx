@@ -85,7 +85,7 @@ const handleLogin = async function(){
         }`}
       >
         <img
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover z-200"
           src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"
           alt="Background"
         />
