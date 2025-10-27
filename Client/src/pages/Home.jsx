@@ -100,7 +100,7 @@ const Home = () => {
       </div>
       <div className='flex flex-col flex-wrap md:flex-row items-center justify-center md:justify-start'>
         {
-          (Snippets.length===0)?(<p className='text-3xl font-semibold m-10'>No Snippets Added Yet!</p>):(Snippets.map((snippet)=><SnippetCard key={snippet.id} snippet={snippet} setviewSnip={setviewSnip} seteditSnip={seteditSnip} setdeleteSnip={setdeleteSnip}/>))
+          (Snippets.length===0)?(<p className='text-3xl font-semibold m-10'>No Snippets Found!</p>):(Snippets.map((snippet)=><SnippetCard key={snippet.id} snippet={snippet} setviewSnip={setviewSnip} seteditSnip={seteditSnip} setdeleteSnip={setdeleteSnip}/>))
         }
       </div>
       <div onClick={()=>{
