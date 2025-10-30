@@ -72,7 +72,7 @@ const Home = () => {
       {viewSnip && <ViewSnippet code={viewSnip} setviewSnip={setviewSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
       {editSnip && <EditSnippet Snippet={editSnip} seteditSnip={seteditSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
       <div className='flex flex-col lg:flex-row justify-between'>
-      <div className='w-[60%]'>
+      <div>
       <div className='lg:text-2xl text-xl text-gray-700 pl-5 lg:pl-10'>Filter by tags:</div>
       <div className='flex flex-wrap lg:pl-10 pl-5'>
          {
@@ -83,16 +83,16 @@ const Home = () => {
         }
       </div>
       </div>
-      <div className='flex lg:gap-2 mx-4 w-[40%]'>
+      <div className='flex lg:gap-2 mx-4'>
         {
           FilteredTags.length>0 && 
-          <button onClick={()=>{setFilteredTags([])}} className='h-[40px] text-white bg-black p-3 rounded-full text-lg font-medium mx-2 my-5 lg:m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400 flex gap-2 items-center justify-center'>
+          <button onClick={()=>{setFilteredTags([])}} className='text-white bg-black p-3 rounded-full text-lg font-medium mx-2 my-5 lg:m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400 flex gap-2 items-center justify-center'>
             Clear All <X/>
           </button>
         }
         {
           tags.length>6 && 
-          <button onClick={()=>{setexpanded(!expanded)}} className='h-[40px] text-white bg-black p-3 rounded-full text-lg font-medium m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400'>
+          <button onClick={()=>{setexpanded(!expanded)}} className='text-white bg-black p-3 rounded-full text-lg font-medium m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400'>
             {expanded? "Show Less" : `Show ${tags.length - 6} More`}
           </button>
         }
