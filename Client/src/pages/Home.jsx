@@ -72,7 +72,7 @@ const Home = () => {
       {viewSnip && <ViewSnippet code={viewSnip} setviewSnip={setviewSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
       {editSnip && <EditSnippet Snippet={editSnip} seteditSnip={seteditSnip} fetchSnippets={fetchSnippets} fetchtags={fetchtags} setloader={setloader}/>}
       <div className='flex flex-col lg:flex-row justify-between'>
-      <div>
+      <div className='w-[60%]'>
       <div className='lg:text-2xl text-xl text-gray-700 pl-5 lg:pl-10'>Filter by tags:</div>
       <div className='flex flex-wrap lg:pl-10 pl-5'>
          {
