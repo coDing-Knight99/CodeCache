@@ -86,13 +86,13 @@ const Home = () => {
       <div className='flex lg:gap-2 mx-4'>
         {
           FilteredTags.length>0 && 
-          <button onClick={()=>{setFilteredTags([])}} className='text-white bg-black p-3 rounded-full text-lg font-medium mx-2 my-5 lg:m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400 flex gap-2 items-center justify-center'>
+          <button onClick={()=>{setFilteredTags([])}} className='max-h-10 text-white bg-black p-3 rounded-full text-lg font-medium mx-2 my-5 lg:m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400 flex gap-2 items-center justify-center'>
             Clear All <X/>
           </button>
         }
         {
           tags.length>6 && 
-          <button onClick={()=>{setexpanded(!expanded)}} className='text-white bg-black p-3 rounded-full text-lg font-medium m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400'>
+          <button onClick={()=>{setexpanded(!expanded)}} className='max-h-10 text-white bg-black p-3 rounded-full text-lg font-medium m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400'>
             {expanded? "Show Less" : `Show ${tags.length - 6} More`}
           </button>
         }
