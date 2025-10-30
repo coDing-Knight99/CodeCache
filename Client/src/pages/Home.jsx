@@ -83,7 +83,7 @@ const Home = () => {
         }
       </div>
       </div>
-      <div className='flex lg:gap-2 mx-4'>
+      <div className='flex lg:gap-2 mx-4 w-[40%]'>
         {
           FilteredTags.length>0 && 
           <button onClick={()=>{setFilteredTags([])}} className='h-[40px] text-white bg-black p-3 rounded-full text-lg font-medium mx-2 my-5 lg:m-5 cursor-pointer hover:scale-101 hover:shadow-2xl hover:border transition-transform hover:border-gray-400 flex gap-2 items-center justify-center'>
